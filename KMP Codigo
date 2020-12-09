@@ -42,8 +42,13 @@ public class kmp
         return next;
     }
 
-    public static void main(String[] args){
-        kmp test=new kmp();
+      public static void main(String[] args){
+        long time_start, time_end;
+        time_start = System.currentTimeMillis();
+        kmp test=new kmp(); 
+        patternSearch();
+        time_end = System.currentTimeMillis();
+        System.out.println("el tiempo en milisegundos es : "+ time_end);
         test.patternSearch("ABABDABACDABABCABAB", "ABCABC");
     }
 }

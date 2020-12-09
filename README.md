@@ -1,1 +1,1 @@
-# Booyer-vs-KMP
+# Comprensión de algoritmos de busqueda de texto

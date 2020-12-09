@@ -1,9 +1,14 @@
-public static int siguiente(String []subcad,String []cad,int k)
-    {   int respuesta = 0;
-        for (int i=1;i<=3;i++){
+public class NewClass        
+{  
+    public static int siguiente(String []subcad,String []cad,int k,int m)
+    {   
+       
+        {
+        int respuesta = 0;
+        for (int i=1;i<=m;i++){
                if(cad[k]==subcad[i])
                {
-                  if(i<3)
+                  if(i<4)
                   {
                       respuesta=i;
                   }
@@ -15,10 +20,12 @@ public static int siguiente(String []subcad,String []cad,int k)
         }
  
       return respuesta;
-  }    
+        }
+       
+  }   
+   
     public static void BoyerMoore(String [] cad, int n, String [] subcad, int m)
-    {   //k para texto y j para el patron 
-        // n para el texto y m para el patron 
+    {   
         int k=m;
         int j=m;
         
@@ -30,7 +37,7 @@ public static int siguiente(String []subcad,String []cad,int k)
             }
             else
               {   
-                    k=k+(m-siguiente(subcad,cad,k)); 
+                    k=k+(m-siguiente(subcad,cad,k,m)); 
               }
             
         }
@@ -42,13 +49,20 @@ public static int siguiente(String []subcad,String []cad,int k)
         {
             System.out.println("No se encontro la palabra");
         }
+      
     }
-     public static void main(String[] args) 
+   
+     Primera prueba
+         public static void main(String[] args) 
     {
-        String [] cad = {"e","s","t","r","u","c","t","u","r","a","a","l","g","o","r","i","t","m","i","c","a"};
-        String []subcad = {"t","u","r","a"};
-        int n=20;
-        int m=3;
+        String [] cad = {"e","s","t","r","u","c","t","u","r","a","d","e","a","l","g","o","r","i","t","m","o","s","y","d","a","t","o","s"};
+        String []subcad = {"d","a","t","o","s"};
+        int n=27;
+        int m=4;
+        long time_start, time_end;
+        time_start = System.currentTimeMillis();
         BoyerMoore(cad,n,subcad,m);
+        time_end = System.currentTimeMillis();
+        System.out.println("el tiempo en milisegundos es : "+ time_end);
     }
-}
+} 

@@ -1,0 +1,49 @@
+package KMP_Busqueda;
+import java.util.Arrays;
+/**
+ *
+ * @author syste
+ */
+public class kmp 
+{
+    public void patternSearch(String s, String pattern){
+        System.out.println("Search String:"+s+"\t"+"Pattern:"+pattern);
+        if(s==null || pattern==null || s.length()<pattern.length()) {
+            System.out.println("No match found!");
+            return;
+        }
+        int sLen=s.length(), pLen=pattern.length();
+        int[] next=getNext(pattern);
+        System.out.println(Arrays.toString(next));
+        int i=0, j=0;
+        while(i<sLen){
+            if(j==-1 || s.charAt(i)==pattern.charAt(j)){
+                i++;
+                j++;
+            }else{
+                j=next[j];
+            }
+            if(j==pLen){
+                System.out.println("Find at index "+(i-pLen));
+                j=0;
+            }
+        }
+    }
+
+    public int[] getNext(String Pattern){
+        int pLen=Pattern.length();
+        int[] next=new int[pLen];
+        next[0]=-1;
+        int i=0, j=-1;
+        while(i<pLen-1){
+            if(j==-1 || Pattern.charAt(i)==Pattern.charAt(j)) next[++i]=++j;
+            else j=next[j];
+        }
+        return next;
+    }
+
+    public static void main(String[] args){
+        kmp test=new kmp();
+        test.patternSearch("ABABDABACDABABCABAB", "ABCABC");
+    }
+}

@@ -1,0 +1,54 @@
+public static int siguiente(String []subcad,String []cad,int k)
+    {   int respuesta = 0;
+        for (int i=1;i<=3;i++){
+               if(cad[k]==subcad[i])
+               {
+                  if(i<3)
+                  {
+                      respuesta=i;
+                  }
+                  else 
+                  {
+                      respuesta =0;
+                  }
+               }
+        }
+ 
+      return respuesta;
+  }    
+    public static void BoyerMoore(String [] cad, int n, String [] subcad, int m)
+    {   //k para texto y j para el patron 
+        // n para el texto y m para el patron 
+        int k=m;
+        int j=m;
+        
+        while (k<=n && j>=0)
+        {
+            if (cad[k-(m-j)]== subcad[j])
+            {
+                j--;
+            }
+            else
+              {   
+                    k=k+(m-siguiente(subcad,cad,k)); 
+              }
+            
+        }
+        if (j==-1)
+        {
+           System.out.println("se encontro la palabra");
+        }
+        else 
+        {
+            System.out.println("No se encontro la palabra");
+        }
+    }
+     public static void main(String[] args) 
+    {
+        String [] cad = {"e","s","t","r","u","c","t","u","r","a","a","l","g","o","r","i","t","m","i","c","a"};
+        String []subcad = {"t","u","r","a"};
+        int n=20;
+        int m=3;
+        BoyerMoore(cad,n,subcad,m);
+    }
+}
